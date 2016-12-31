@@ -1,0 +1,24 @@
+{
+  "name": "todo-app",
+  "version": "0.0.0",
+  "description": "Todo app with Reactjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "production": "webpack -p"
+  },
+  "author": "Paulius Andriekus",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "react": "~15.4.1",
+    "react-dom": "~15.4.1"
+  },
+  "devDependencies": {
+    "webpack": "~1.14.0",
+    "webpack-dev-server": "~1.16.2",
+    "html-webpack-plugin": "~2.25.0",
+    "babel-loader": "~6.2.10",
+    "babel-core": "~6.21.0",
+    "babel-preset-react": "~6.16.0"
+  }
+}
