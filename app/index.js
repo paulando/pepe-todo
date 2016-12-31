@@ -8,7 +8,6 @@ var Noob = React.createClass({
 
     return {
       value: "",
-      taskDone: "",
       pepe: "",
       todoList: ["wipe", "butt"]
     }
@@ -60,17 +59,19 @@ var Noob = React.createClass({
   },
 
   handleDone: function(e) {
+    var el = e.target;
+    var el_parent = el.parentElement.classList;
 
-    var el = e.target.parentElement.classList;
-
-    if (!el.contains('done')) {
-      el.add("done");
+    if (!el_parent.contains('done')) {
+      el_parent.add("done");
+      el.innerHTML = "Undo";
       this.setState({
         pepe: "https://pbs.twimg.com/media/CayijGDUYAAJcAk.jpg",
       });
 
     } else {
-      el.remove("done");
+      el_parent.remove("done");
+      el.innerHTML = "Done";
       this.setState({
         pepe: "http://images.8tracks.com/cover/i/008/769/353/tumblr_ndo4s3xQln1qlpyreo8_1280-9891.jpg?rect=3,0,633,633&q=98&fm=jpg&fit=max&w=320&h=320",
       });
@@ -92,10 +93,20 @@ var Noob = React.createClass({
           <ul className="list-group">
             {this.state.todoList.map(function(task, index) {
               return (
-                <li className={"list-group-item clearfix " + this.state.taskDone} key={index}>
+                <li className="list-group-item clearfix" key={index}>
                   <span className="pull-left task">{task}</span>
-                  <span className="btn btn-sm btn-danger pull-right" data-index={index} onClick={this.handleRemove}>Remove</span>
-                  <span className="btn btn-sm btn-success pull-right" onClick={this.handleDone} style={{marginRight: 10 + "px"}}>Done</span>
+                  <span
+                    className="btn btn-sm btn-danger pull-right"
+                    data-index={index}
+                    onClick={this.handleRemove}>
+                      Remove
+                  </span>
+                  <span
+                    className="btn btn-sm btn-success pull-right"
+                    onClick={this.handleDone}
+                    style={{marginRight: 10 + "px"}}>
+                      Done
+                  </span>
                 </li>
               )
             }.bind(this))}
@@ -113,7 +124,7 @@ var Noob = React.createClass({
 });
 
 const Pepe = function(props) {
-  console.log(props.pepe);
+  // console.log(props.pepe);
   // return (
     if (props.pepe != "") {
       return (
